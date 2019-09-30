@@ -1,30 +1,16 @@
 ---
-# reboot mysql databases (not db2 servers and not teesnap)
 - hosts: dbservers
   name: Reboot dbserver
   gather_facts: false
   become: yes
   serial: 1
   roles:
-    - reboot_systems 
-  tags: reboot_mysql
+    - { reboot_systems ,  tags: [ 'reboot_mysql' ] }
 
-- hosts: tsmdb:tspdb
-  name: reboot teesnap database servers
+- hosts: all:!dbservers
+  name: Reboot all servers - NO dbservers
   gather_facts: false
   become: yes
-  serial: 1
+  serial: 10
   roles:
-    - reboot_systems 
-  tags: reboot_teesnap_databases 
-
-- hosts: towdb
-  name: reboot tower database servers
-  gather_facts: false
-  become: yes
-  serial: 1
-  roles:
-    - reboot_systems 
-  tags: reboot_towdb_databases
-
-
+    - { reboot_systems, tags: [ 'reboot_no_dbs' ] }
