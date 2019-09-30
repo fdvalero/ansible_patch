@@ -5,7 +5,7 @@
   become: yes
   serial: 1
   roles:
-    - { reboot_systems ,  tags: [ 'reboot_mysql' ] }
+    - { role: reboot_systems ,  tags: [ 'reboot_mysql' ] }
 
 - hosts: all:!dbservers
   name: Reboot all servers - NO dbservers
@@ -13,4 +13,4 @@
   become: yes
   serial: 10
   roles:
-    - { reboot_systems, tags: [ 'reboot_no_dbs' ] }
+    - { role: reboot_systems, tags: [ 'reboot_no_dbs' ] }
