@@ -1,0 +1,6 @@
+# packages that we exclude/do not update
+exclude_pkgs: "'ansible'"
+
+# packages that we intend to update
+# do not double quote, and do not use commas between packages
+include_pkgs: '*librelp*'

@@ -1,0 +1,31 @@
+---
+- name: Patch All systems - BaseOS repository enabled
+  command: yum -y
+    --exclude={{ exclude_pkgs|default(omit) }}
+    --disablerepo=*
+    --enablerepo=rhel-{{ ansible_distribution_major_version }}-server-optional-rpms,rhel-{{ ansible_distribution_major_version }}-server-rpms,rhel-{{ ansible_distribution_major_version }}-satellite-tools-6.3-rpms
+  args:
+    warn: "False"
+  when:
+    - ansible_architecture == "x86_64"
+
+- name: Patch All systems - AppStream repository enabled
+  command: yum -y
+    --exclude={{ exclude_pkgs|default(omit) }}
+    --disablerepo=*
+    --enablerepo=rhel-{{ ansible_distribution_major_version }}-server-rpms,rhel-{{ ansible_distribution_major_version }}-satellite-tools-6.3-rpms
+  args:
+    warn: "False"
+  when:
+    - ansible_architecture == "x86_64"
+
+- name: Patch DataBases on applicable x86_64 systems
+  command: yum -y
+    --exclude={{ exclude_pkgs|default(omit) }}
+    --disablerepo=*
+    --enablerepo=jb-eap-6.4-for-rhel-6-server-rpms,jb-coreservices-1-for-rhel-6-server-rpms
+  args:
+    warn: "False"
+  when:
+    - "'databases' in group_names"
+    - ansible_distribution_major_version == "8"

@@ -1,0 +1,6 @@
+# use date, bz, adv, etc tags
+- include: playbooks/patch_all.yml
+
+# use tag reboot_mysql
+- include: playbooks/reboot_dbservers.yml
+

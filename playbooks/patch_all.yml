@@ -1,0 +1,23 @@
+---
+- hosts: all:!dbservers
+  name: Patch all Systems, no dbservers
+  gather_facts: true
+  become: yes
+  roles:
+    - { role: date, tags: [ 'date' ] }
+    - { role: adv, tags: [ 'adv' ] }
+    - { role: bz, tags: [ 'bz' ] }
+    - { role: cve, tags: [ 'cve' ] }
+    - { role: package_list, tags: [ 'package_list' ] }
+
+- hosts: dbservers
+  name: Patch dbservers
+  gather_facts: true
+  become: yes
+  roles:
+    - { role: date, tags: [ 'dbservers_date' ] }
+    - { role: adv, tags: [ 'dbservers_adv' ] }
+    - { role: bz, tags: [ 'dbservers_bz' ] }
+    - { role: cve, tags: [ 'dbservers_cve' ] }
+    - { role: package_list, tags: [ 'dbservers_package_list' ] }
+

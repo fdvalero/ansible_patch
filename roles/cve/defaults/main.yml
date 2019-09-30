@@ -1,0 +1,3 @@
+---
+# packages that we exclude/do not update
+exclude_pkgs: "'ansible'"

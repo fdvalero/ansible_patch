@@ -1,0 +1,14 @@
+---
+###########CVE UPDATES#############
+
+- name: Include cve vars
+  include_vars: cve.yml
+
+- name: Patch system with provided CVEs
+  command: yum -y --cve={{ item }}
+    --exclude={{exclude_pkgs|default(omit)}}
+  args:
+    warn: "False"
+  when: cvelist != None
+  with_items:
+    - "{{ cvelist }}"
