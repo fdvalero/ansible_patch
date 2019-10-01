@@ -5,7 +5,7 @@
   include_vars: adv.yml
 
 - name: Patch system with provided RedHat advisories for RHEL 6
-  command: yum -y --advisory={{ item }}
+  command: yum -y update --advisory={{ item }}
     --exclude={{exclude_pkgs|default(omit)}}
   args:
     warn: "False"
@@ -14,7 +14,7 @@
     - "{{ advlist }}"
 
 - name: Patch system with provided RedHat advisories for RHEL 7
-  command: yum -y --advisory={{ item }}
+  command: yum -y update --advisory={{ item }}
     --exclude={{exclude_pkgs|default(omit)}}
   args:
     warn: "False"
@@ -23,7 +23,7 @@
     - "{{ advlist }}"
 
 - name: Patch system with provided RedHat advisories for RHEL 8
-  command: yum -y --advisory={{ item }}
+  command: yum -y update --advisory={{ item }}
     --exclude={{exclude_pkgs|default(omit)}}
   args:
     warn: "False"
