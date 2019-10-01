@@ -1,5 +1,4 @@
-# ansible_patch
-Ansible Patch
+# Ansible Patch
 
 # How to use it
 ## to patch a list of package:
