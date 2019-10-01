@@ -1,6 +1,2 @@
 ---
 exclude_pkgs: "'ansible'"
-
-# date to patch to (including date specified)
-# patch_date: 2019-09-20
-

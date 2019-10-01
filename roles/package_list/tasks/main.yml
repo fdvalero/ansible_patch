@@ -13,13 +13,3 @@
     warn: "False"
   when:
     - ansible_architecture == "x86_64"
-
-# - name: Patch ppc64le systems with optional repo enabled
-#   command: yum -y update
-#     --exclude={{exclude_pkgs|default(omit)}}
-#     --disablerepo="*"
-#     --enablerepo={{ enabled_repos_ppc64le }} {{ include_pkgs }}
-#   args:
-#     warn: "False"
-#   when:
-#     - ansible_architecture == "ppc64le"
