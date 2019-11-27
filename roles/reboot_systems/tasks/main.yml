@@ -34,13 +34,13 @@
 #    -  "'allmysql' in group_names"
 
 - name: Wait for ports to come back up - SSH
-  # wait_for: state=started port={{ service_port|default(22) }} timeout=300 connect_timeout=2 delay=10
-  wait_for:
-    state: started
-    port: "{{ service_port|default(22) }}"
-    timeout: 300
-    connect_timeout: 2
-    delay: 10
+  wait_for: state=started port={{ service_port|default(22) }} timeout=300 connect_timeout=2 delay=10
+  # wait_for:
+  #   state: started
+  #   port: "{{ service_port|default(22) }}"
+  #   timeout: 300
+  #   connect_timeout: 2
+  #   delay: 10
   become: false
   ignore_errors: true
   when: status|succeeded
