@@ -5,7 +5,7 @@
 ansible-playbook -i ../ansiblefest/inventory_service_ansible patch_all.yml -l prd -t package_list -u root -k
 
 ## to patch a adv:
-ansible-playbook -i ../ansiblefest/inventory_service_ansible patch_all.yml -l prd -t adv -u root -k
+```ansible-playbook -i ../ansiblefest/inventory_service_ansible patch_all.yml -l prd -t adv -u root -k```
 
 ## to patch a cve
 ansible-playbook -i ../ansiblefest/inventory_service_ansible patch_all.yml -l prd -t cve -u root -k
